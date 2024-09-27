@@ -1,9 +1,8 @@
 #include <iostream>
 #include <algorithm>
-void quick_sort(int q[], int l, int r)
+void QuickSort(int q[], int l, int r)
 {
     if (l >= r) return;
-
     int i = l - 1, j = r + 1, x = q[l + r >> 1];
     while (i < j)
     {
@@ -11,23 +10,17 @@ void quick_sort(int q[], int l, int r)
         do j -- ; while (q[j] > x);
         if (i < j) std::swap(q[i], q[j]);
     }
-    quick_sort(q, l, j), quick_sort(q, j + 1, r);
+    QuickSort(q, l, j), QuickSort(q, j + 1, r);
 }
 
 int main()
 {
-	int n;
-	scanf("%d", &n);
-	const int SIZE  = 2e6;
-	int arr[SIZE];
-	for (int i = 1; i < n; ++i)
-	{
-		scanf("%d", &arr[i]);
-	}
-	quick_sort(arr, 0, n - 1);
+	const int SIZE  = 10;
+	int arr[SIZE] = {2,6,1,8,3,5,9,0,7,4};
+	QuickSort(arr, 0, 9);
 	for (const auto& a : arr)
 	{
-		printf("%d", a);
+		printf("%d\t", a);
 	}
 	return 0x0;
 }
